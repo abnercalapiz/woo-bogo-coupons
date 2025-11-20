@@ -1,0 +1,102 @@
+/* BOGO Coupons Admin Styles */
+
+.bogo-coupon-fields {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.bogo-coupon-fields h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #23282d;
+}
+
+.bogo-rules-table {
+    margin-bottom: 15px;
+    background-color: #fff;
+}
+
+.bogo-rules-table th {
+    font-weight: 600;
+    background-color: #f1f1f1;
+}
+
+.bogo-rules-table td {
+    vertical-align: middle;
+    padding: 10px;
+}
+
+.bogo-rules-table .wc-product-search {
+    width: 100% !important;
+}
+
+.bogo-rules-table input[type="number"] {
+    width: 100%;
+    max-width: 100px;
+}
+
+.bogo-rule-row .button.remove-bogo-rule {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+}
+
+.bogo-rule-row .button.remove-bogo-rule:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+#add-bogo-rule {
+    margin-top: 10px;
+    display: inline-block;
+}
+
+/* Ensure the BOGO container is scrollable if many rules */
+#bogo-rules-container {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+/* Select2 overrides for consistency */
+.bogo-rules-table .select2-container {
+    width: 100% !important;
+    min-width: 200px;
+}
+
+.bogo-rules-table .select2-container .select2-selection--single {
+    height: 32px;
+    line-height: 30px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 782px) {
+    .bogo-rules-table {
+        font-size: 12px;
+    }
+    
+    .bogo-rules-table td,
+    .bogo-rules-table th {
+        padding: 8px 5px;
+    }
+    
+    .bogo-rules-table input[type="number"] {
+        width: 50px;
+    }
+}
+
+/* Free item styles in cart */
+.bogo-free-price,
+.bogo-free-subtotal {
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Hide certain fields when BOGO coupon is selected */
+body.post-type-shop_coupon .bogo-coupon-selected .coupon_amount_field,
+body.post-type-shop_coupon .bogo-coupon-selected .free_shipping_field,
+body.post-type-shop_coupon .bogo-coupon-selected .apply_before_tax_field {
+    display: none !important;
+}
