@@ -124,6 +124,14 @@ Yes, you can control this in two ways:
 
 ## 🔄 Changelog
 
+### 1.0.1 (2025-11-24)
+- Security: Added output escaping for product names in notices to prevent XSS
+- Security: Sanitized $_GET parameters in admin pages
+- Security: Added validation for discount percentages (0-100%)
+- Security: Added session existence checks before accessing WooCommerce session
+- Security: Enhanced database error handling for BOGO rules queries
+- Code quality: Minor code improvements and optimizations
+
 ### 1.0.0 (2024-11-20)
 - Initial release
 - BOGO coupon type for WooCommerce

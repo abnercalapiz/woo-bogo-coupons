@@ -33,7 +33,7 @@ class WBC_Admin {
 
         // Only load on coupon pages
         if ( ( $hook === 'post.php' || $hook === 'post-new.php' ) && 
-             ( ( $post && $post->post_type === 'shop_coupon' ) || ( isset( $_GET['post_type'] ) && $_GET['post_type'] === 'shop_coupon' ) ) ) {
+             ( ( $post && $post->post_type === 'shop_coupon' ) || ( isset( $_GET['post_type'] ) && sanitize_text_field( $_GET['post_type'] ) === 'shop_coupon' ) ) ) {
             
             // Enqueue WooCommerce admin scripts
             wp_enqueue_script( 'wc-enhanced-select' );

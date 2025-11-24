@@ -1,0 +1,21 @@
+== Changelog ==
+
+= 1.0.1 - 2025-11-24 =
+* Security: Added output escaping for product names in notices to prevent XSS
+* Security: Sanitized $_GET parameters in admin pages
+* Security: Added validation for discount percentages (0-100%)
+* Security: Added session existence checks before accessing WooCommerce session
+* Security: Enhanced database error handling for BOGO rules queries
+* Code quality: Minor code improvements and optimizations
+
+= 1.0.0 - 2025-11-24 =
+* Initial release
+* BOGO (Buy One Get One) coupon functionality
+* Automatic free product addition
+* Configurable BOGO rules per coupon
+* Admin interface for managing BOGO settings
+* Support for simple products and variations
+* Cart validation and automatic updates
+* Usage tracking and reporting
+* Customizable free product text
+* Auto-apply coupon options

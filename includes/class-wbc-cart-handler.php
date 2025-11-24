@@ -261,7 +261,7 @@ class WBC_Cart_Handler {
             wc_add_notice( 
                 sprintf( 
                     __( 'The free product "%s" is out of stock and cannot be added.', 'woo-bogo-coupons' ), 
-                    $product ? $product->get_name() : __( 'Product', 'woo-bogo-coupons' ) 
+                    $product ? esc_html( $product->get_name() ) : __( 'Product', 'woo-bogo-coupons' ) 
                 ), 
                 'error' 
             );
@@ -298,7 +298,7 @@ class WBC_Cart_Handler {
         wc_add_notice( 
             sprintf( 
                 __( 'Free product "%s" has been added to your cart!', 'woo-bogo-coupons' ), 
-                $product->get_name() 
+                esc_html( $product->get_name() ) 
             ), 
             'success' 
         );
@@ -511,7 +511,14 @@ class WBC_Cart_Handler {
             if ( isset( $cart_item['bogo_free_item'] ) && isset( $cart_item['bogo_discount_percentage'] ) ) {
                 $product = $cart_item['data'];
                 $original_price = $product->get_price();
-                $discounted_price = $original_price * ( 1 - ( $cart_item['bogo_discount_percentage'] / 100 ) );
+                
+                // Validate discount percentage
+                $discount_percentage = absint( $cart_item['bogo_discount_percentage'] );
+                if ( $discount_percentage < 0 || $discount_percentage > 100 ) {
+                    $discount_percentage = 0;
+                }
+                
+                $discounted_price = $original_price * ( 1 - ( $discount_percentage / 100 ) );
                 $product->set_price( $discounted_price );
             }
         }
@@ -627,7 +634,7 @@ class WBC_Cart_Handler {
                 $coupon->get_id()
             ) );
 
-            if ( empty( $rules ) ) {
+            if ( $rules === false || empty( $rules ) ) {
                 continue;
             }
 
@@ -674,6 +681,10 @@ class WBC_Cart_Handler {
                 "SELECT * FROM {$wpdb->prefix}wbc_bogo_rules WHERE coupon_id = %d",
                 $coupon->get_id()
             ) );
+
+            if ( $rules === false ) {
+                continue;
+            }
 
             $still_qualifies = false;
             foreach ( $rules as $rule ) {
